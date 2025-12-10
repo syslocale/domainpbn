@@ -11,6 +11,16 @@ const PageForm = ({ page, onSuccess, onCancel }) => {
     is_published: true,
   });
   const [loading, setLoading] = useState(false);
+  const [ReactQuill, setReactQuill] = useState(null);
+  const quillRef = useRef(null);
+
+  // Dynamically import ReactQuill to avoid SSR issues with React 19
+  useEffect(() => {
+    import('react-quill').then((module) => {
+      setReactQuill(() => module.default);
+    });
+    import('react-quill/dist/quill.snow.css');
+  }, []);
 
   useEffect(() => {
     if (page) {
