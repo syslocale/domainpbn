@@ -1,0 +1,117 @@
+{
+  "timestamp": "2025-12-10T07:02:35.511319",
+  "total_tests": 18,
+  "passed_tests": 18,
+  "success_rate": 100.0,
+  "failed_tests": [],
+  "detailed_results": [
+    {
+      "test_name": "API Root",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2025-12-10T07:02:34.809837"
+    },
+    {
+      "test_name": "PBN Public Listing",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2025-12-10T07:02:34.852258"
+    },
+    {
+      "test_name": "PBN Filtering",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2025-12-10T07:02:34.889315"
+    },
+    {
+      "test_name": "PBN Admin Listing",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2025-12-10T07:02:34.927669"
+    },
+    {
+      "test_name": "Packages Public",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2025-12-10T07:02:34.969415"
+    },
+    {
+      "test_name": "Packages Admin",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2025-12-10T07:02:35.012530"
+    },
+    {
+      "test_name": "Blog Listing",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2025-12-10T07:02:35.052567"
+    },
+    {
+      "test_name": "Blog Search",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2025-12-10T07:02:35.093923"
+    },
+    {
+      "test_name": "Blog Admin",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2025-12-10T07:02:35.139254"
+    },
+    {
+      "test_name": "FAQ Public",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2025-12-10T07:02:35.177852"
+    },
+    {
+      "test_name": "FAQ Admin",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2025-12-10T07:02:35.213847"
+    },
+    {
+      "test_name": "Pages Admin",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2025-12-10T07:02:35.254807"
+    },
+    {
+      "test_name": "Settings",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2025-12-10T07:02:35.289694"
+    },
+    {
+      "test_name": "Sitemap",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2025-12-10T07:02:35.326610"
+    },
+    {
+      "test_name": "Robots.txt",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2025-12-10T07:02:35.403057"
+    },
+    {
+      "test_name": "PBN Update",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2025-12-10T07:02:35.473239"
+    },
+    {
+      "test_name": "PBN Delete",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2025-12-10T07:02:35.509131"
+    },
+    {
+      "test_name": "PBN Create",
+      "success": true,
+      "details": "Status: 200",
+      "timestamp": "2025-12-10T07:02:35.509141"
+    }
+  ]
+}
