@@ -1,0 +1,96 @@
+/* Quill Dark Theme Override */
+
+.quill-dark-wrapper .ql-toolbar {
+  background: #0f172a !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 0.5rem 0.5rem 0 0 !important;
+}
+
+.quill-dark-wrapper .ql-container {
+  background: #1e293b !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-top: none !important;
+  border-radius: 0 0 0.5rem 0.5rem !important;
+}
+
+.quill-dark-wrapper .ql-editor {
+  color: #f8fafc !important;
+  min-height: 300px;
+}
+
+.quill-dark-wrapper .ql-editor.ql-blank::before {
+  color: #64748b !important;
+}
+
+/* Toolbar buttons */
+.quill-dark-wrapper .ql-toolbar button {
+  color: #cbd5e1 !important;
+}
+
+.quill-dark-wrapper .ql-toolbar button:hover {
+  color: #3b82f6 !important;
+}
+
+.quill-dark-wrapper .ql-toolbar button.ql-active {
+  color: #3b82f6 !important;
+}
+
+.quill-dark-wrapper .ql-stroke {
+  stroke: #cbd5e1 !important;
+}
+
+.quill-dark-wrapper .ql-fill {
+  fill: #cbd5e1 !important;
+}
+
+.quill-dark-wrapper .ql-picker-label {
+  color: #cbd5e1 !important;
+}
+
+.quill-dark-wrapper .ql-picker-options {
+  background: #1e293b !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.quill-dark-wrapper .ql-picker-item {
+  color: #cbd5e1 !important;
+}
+
+.quill-dark-wrapper .ql-picker-item:hover {
+  color: #3b82f6 !important;
+  background: rgba(59, 130, 246, 0.1) !important;
+}
+
+/* Snow theme overrides for dark mode */
+.quill-dark-wrapper .ql-snow .ql-stroke {
+  stroke: #cbd5e1 !important;
+}
+
+.quill-dark-wrapper .ql-snow .ql-stroke.ql-fill {
+  fill: #cbd5e1 !important;
+}
+
+.quill-dark-wrapper .ql-snow .ql-picker-label:hover .ql-stroke {
+  stroke: #3b82f6 !important;
+}
+
+.quill-dark-wrapper .ql-snow.ql-toolbar button:hover .ql-stroke {
+  stroke: #3b82f6 !important;
+}
+
+.quill-dark-wrapper .ql-snow.ql-toolbar button.ql-active .ql-stroke {
+  stroke: #3b82f6 !important;
+}
+
+/* Tooltip */
+.quill-dark-wrapper .ql-tooltip {
+  background: #1e293b !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #f8fafc !important;
+}
+
+.quill-dark-wrapper .ql-tooltip input {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
