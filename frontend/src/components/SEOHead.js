@@ -6,10 +6,10 @@ const SEOHead = ({
   title = 'DomainPBN - Premium Backlinks PBN Murah & Berkualitas',
   description = 'Layanan backlink PBN premium dengan harga terjangkau. Domain aged, DR tinggi, spam score rendah. Tingkatkan ranking website Anda dengan aman.',
   keywords = 'backlink pbn, jasa backlink, pbn murah, backlink berkualitas, seo indonesia',
-  ogImage = 'https://linkpremium.preview.emergentagent.com/og-image.jpg',
+  ogImage = 'https://linkboost-13.preview.emergentagent.com/og-image.jpg',
 }) => {
   const location = useLocation();
-  const baseUrl = 'https://linkpremium.preview.emergentagent.com';
+  const baseUrl = 'https://linkboost-13.preview.emergentagent.com';
 
   useEffect(() => {
     updateMetaTags({

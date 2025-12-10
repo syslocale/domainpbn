@@ -510,7 +510,7 @@ async def update_settings(settings: SettingsUpdate):
 # SEO Routes
 @api_router.get("/sitemap")
 async def get_sitemap():
-    base_url = "https://linkpremium.preview.emergentagent.com"
+    base_url = "https://linkboost-13.preview.emergentagent.com"
     
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>']
     sitemap.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
@@ -530,7 +530,7 @@ async def get_sitemap():
 
 @api_router.get("/robots")
 async def get_robots():
-    return """User-agent: *\nAllow: /\n\nSitemap: https://linkpremium.preview.emergentagent.com/api/sitemap"""
+    return """User-agent: *\nAllow: /\n\nSitemap: https://linkboost-13.preview.emergentagent.com/api/sitemap"""
 
 # Include the router in the main app
 app.include_router(api_router)

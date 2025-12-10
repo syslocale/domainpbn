@@ -110,7 +110,7 @@ export const generateArticleSchema = (article) => {
       name: 'DomainPBN',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://linkpremium.preview.emergentagent.com/logo.png'
+        url: 'https://linkboost-13.preview.emergentagent.com/logo.png'
       }
     }
   };
