@@ -130,6 +130,30 @@ class Page(PageBase):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
+# Domain Listing Models
+class DomainListingBase(BaseModel):
+    domain_name: str
+    da: int
+    pa: int
+    ur: int
+    dr: int
+    tf: int
+    cf: int
+    price: int
+    web_archive_history: Optional[str] = None  # URL to wayback machine
+    age: int  # in years
+    registrar: str
+    status: str = "available"  # available, sold, reserved
+    notes: Optional[str] = None
+
+class DomainListingCreate(DomainListingBase):
+    pass
+
+class DomainListing(DomainListingBase):
+    model_config = ConfigDict(extra="ignore")
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
 # Settings Models
 class SettingsBase(BaseModel):
     site_name: str = "DomainPBN"
