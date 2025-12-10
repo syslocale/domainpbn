@@ -71,6 +71,7 @@ const Dashboard = () => {
     { title: 'Add PBN Site', link: '/admin/pbn', color: 'blue' },
     { title: 'Add Package', link: '/admin/packages', color: 'green' },
     { title: 'Add Blog Post', link: '/admin/blog', color: 'purple' },
+    { title: 'Edit Page Content', link: '/admin/page-content', color: 'cyan' },
     { title: 'Update Settings', link: '/admin/settings', color: 'orange' },
   ];
 
