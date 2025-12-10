@@ -72,4 +72,14 @@ export const domainsAPI = {
   delete: (id) => apiClient.delete(`/admin/domains/${id}`),
 };
 
+// Page Content API
+export const pageContentAPI = {
+  getAll: () => apiClient.get('/page-content'),
+  getByKey: (key) => apiClient.get(`/page-content/${key}`),
+  getAllAdmin: () => apiClient.get('/admin/page-content'),
+  create: (data) => apiClient.post('/admin/page-content', data),
+  update: (id, data) => apiClient.put(`/admin/page-content/${id}`, data),
+  delete: (id) => apiClient.delete(`/admin/page-content/${id}`),
+};
+
 export default apiClient;
