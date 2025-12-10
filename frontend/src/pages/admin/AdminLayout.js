@@ -19,6 +19,7 @@ const AdminLayout = () => {
   const menuItems = [
     { name: 'Dashboard', path: '/admin', icon: <LayoutDashboard size={20} /> },
     { name: 'PBN Sites', path: '/admin/pbn', icon: <Globe size={20} /> },
+    { name: 'Aged Domains', path: '/admin/domains', icon: <Globe size={20} /> },
     { name: 'Packages', path: '/admin/packages', icon: <Package size={20} /> },
     { name: 'Blog', path: '/admin/blog', icon: <FileText size={20} /> },
     { name: 'FAQ', path: '/admin/faq', icon: <HelpCircle size={20} /> },
