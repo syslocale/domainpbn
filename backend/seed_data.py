@@ -362,6 +362,114 @@ async def seed_data():
     await db.settings.insert_one(settings)
     print("Inserted settings")
     
+    # Seed Aged Domains
+    aged_domains = [
+        {
+            "id": str(uuid.uuid4()),
+            "domain_name": "techinsights.com",
+            "da": 58,
+            "pa": 52,
+            "ur": 45,
+            "dr": 62,
+            "tf": 35,
+            "cf": 42,
+            "price": 8500000,
+            "web_archive_history": "https://web.archive.org/web/*/techinsights.com",
+            "age": 12,
+            "registrar": "GoDaddy",
+            "status": "available",
+            "notes": "Clean tech blog with strong backlink profile",
+            "created_at": datetime.now(timezone.utc).isoformat()
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "domain_name": "healthylivingtoday.com",
+            "da": 65,
+            "pa": 60,
+            "ur": 55,
+            "dr": 68,
+            "tf": 45,
+            "cf": 50,
+            "price": 12000000,
+            "web_archive_history": "https://web.archive.org/web/*/healthylivingtoday.com",
+            "age": 10,
+            "registrar": "Namecheap",
+            "status": "available",
+            "notes": "High authority health & wellness domain",
+            "created_at": datetime.now(timezone.utc).isoformat()
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "domain_name": "financeguide.net",
+            "da": 72,
+            "pa": 68,
+            "ur": 62,
+            "dr": 75,
+            "tf": 50,
+            "cf": 55,
+            "price": 18000000,
+            "web_archive_history": "https://web.archive.org/web/*/financeguide.net",
+            "age": 15,
+            "registrar": "GoDaddy",
+            "status": "available",
+            "notes": "Premium finance domain with excellent metrics",
+            "created_at": datetime.now(timezone.utc).isoformat()
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "domain_name": "travelworldwide.org",
+            "da": 48,
+            "pa": 44,
+            "ur": 38,
+            "dr": 52,
+            "tf": 30,
+            "cf": 35,
+            "price": 6000000,
+            "web_archive_history": "https://web.archive.org/web/*/travelworldwide.org",
+            "age": 8,
+            "registrar": "Namecheap",
+            "status": "available",
+            "notes": "Travel niche domain with global reach",
+            "created_at": datetime.now(timezone.utc).isoformat()
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "domain_name": "digitalbusiness.co",
+            "da": 55,
+            "pa": 50,
+            "ur": 48,
+            "dr": 58,
+            "tf": 38,
+            "cf": 45,
+            "price": 9500000,
+            "web_archive_history": "https://web.archive.org/web/*/digitalbusiness.co",
+            "age": 9,
+            "registrar": "GoDaddy",
+            "status": "available",
+            "notes": "Business & marketing focused domain",
+            "created_at": datetime.now(timezone.utc).isoformat()
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "domain_name": "ecommerceexperts.com",
+            "da": 70,
+            "pa": 65,
+            "ur": 60,
+            "dr": 73,
+            "tf": 48,
+            "cf": 53,
+            "price": 15000000,
+            "web_archive_history": "https://web.archive.org/web/*/ecommerceexperts.com",
+            "age": 11,
+            "registrar": "Namecheap",
+            "status": "available",
+            "notes": "E-commerce authority site with strong SEO",
+            "created_at": datetime.now(timezone.utc).isoformat()
+        }
+    ]
+    await db.domain_listings.insert_many(aged_domains)
+    print(f"Inserted {len(aged_domains)} aged domains")
+    
     print("\n✅ Database seeding completed successfully!")
     client.close()
 
