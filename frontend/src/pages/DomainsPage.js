@@ -10,16 +10,19 @@ const DomainsPage = () => {
   const [filteredDomains, setFilteredDomains] = useState([]);
   const [settings, setSettings] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
   const [filters, setFilters] = useState({
     minDR: '',
     sortBy: 'dr',
   });
+  
+  const ITEMS_PER_PAGE = 12;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [domainsRes, settingsRes] = await Promise.all([
-          domainsAPI.getPublic({ sort_by: 'dr' }),
+          domainsAPI.getPublic({ sort_by: 'dr', limit: 100 }),
           settingsAPI.get(),
         ]);
         setDomains(domainsRes.data);
@@ -61,6 +64,7 @@ const DomainsPage = () => {
     });
 
     setFilteredDomains(filtered);
+    setPage(1); // Reset to page 1 when filters change
   }, [filters, domains]);
 
   const handleOrderClick = (domain) => {
@@ -154,8 +158,8 @@ const DomainsPage = () => {
         </div>
 
         {/* Domains Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {filteredDomains.map((domain, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          {filteredDomains.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE).map((domain, index) => (
             <div
               key={domain.id}
               data-testid={`domain-item-${index}`}
@@ -244,6 +248,33 @@ const DomainsPage = () => {
             </div>
           ))}
         </div>
+
+        {/* Pagination */}
+        {filteredDomains.length > ITEMS_PER_PAGE && (
+          <div className="mb-12 flex justify-center items-center gap-4">
+            {page > 1 && (
+              <button
+                onClick={() => setPage(page - 1)}
+                data-testid="prev-page-btn"
+                className="bg-slate-900 hover:bg-slate-800 text-white rounded-lg px-6 py-2 font-medium transition-all"
+              >
+                Previous
+              </button>
+            )}
+            <div className="text-slate-400 px-4">
+              Halaman <span className="text-white font-semibold">{page}</span> dari <span className="text-white font-semibold">{Math.ceil(filteredDomains.length / ITEMS_PER_PAGE)}</span>
+            </div>
+            {page < Math.ceil(filteredDomains.length / ITEMS_PER_PAGE) && (
+              <button
+                onClick={() => setPage(page + 1)}
+                data-testid="next-page-btn"
+                className="bg-blue-600 hover:bg-blue-500 text-white rounded-lg px-6 py-2 font-medium transition-all"
+              >
+                Next
+              </button>
+            )}
+          </div>
+        )}
 
         {/* Info Section */}
         <div className="glass-panel p-8 md:p-12 text-center">
