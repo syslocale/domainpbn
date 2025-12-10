@@ -67,6 +67,7 @@ function App() {
             <Route path="blog" element={<BlogManagement />} />
             <Route path="faq" element={<FAQManagement />} />
             <Route path="pages" element={<PagesManagement />} />
+            <Route path="page-content" element={<PageContentManagement />} />
             <Route path="settings" element={<SettingsManagement />} />
           </Route>
         </Routes>
