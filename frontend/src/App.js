@@ -12,6 +12,7 @@ import FloatingWhatsApp from './components/FloatingWhatsApp';
 import Homepage from './pages/Homepage';
 import PackagesPage from './pages/PackagesPage';
 import PBNPage from './pages/PBNPage';
+import DomainsPage from './pages/DomainsPage';
 import BlogListPage from './pages/BlogListPage';
 import BlogDetailPage from './pages/BlogDetailPage';
 import FAQPage from './pages/FAQPage';
