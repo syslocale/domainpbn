@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, Save } from 'lucide-react';
 import { pagesAPI } from '../../api/client';
 import { toast } from 'sonner';
+import '../../styles/quill-dark.css';
 
 const PageForm = ({ page, onSuccess, onCancel }) => {
   const [formData, setFormData] = useState({
