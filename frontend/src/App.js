@@ -22,6 +22,7 @@ import StaticPage from './pages/StaticPage';
 import AdminLayout from './pages/admin/AdminLayout';
 import Dashboard from './pages/admin/Dashboard';
 import PBNManagement from './pages/admin/PBNManagement';
+import DomainsManagement from './pages/admin/DomainsManagement';
 import PackagesManagement from './pages/admin/PackagesManagement';
 import BlogManagement from './pages/admin/BlogManagement';
 import FAQManagement from './pages/admin/FAQManagement';
