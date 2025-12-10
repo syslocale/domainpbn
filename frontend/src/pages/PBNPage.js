@@ -10,17 +10,20 @@ const PBNPage = () => {
   const [filteredSites, setFilteredSites] = useState([]);
   const [settings, setSettings] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
   const [filters, setFilters] = useState({
     niche: '',
     minDR: '',
     sortBy: 'dr',
   });
+  
+  const ITEMS_PER_PAGE = 12;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [pbnRes, settingsRes] = await Promise.all([
-          pbnAPI.getPublic({ sort_by: 'dr' }),
+          pbnAPI.getPublic({ sort_by: 'dr', limit: 100 }),
           settingsAPI.get(),
         ]);
         setPbnSites(pbnRes.data);
@@ -69,6 +72,7 @@ const PBNPage = () => {
     });
 
     setFilteredSites(filtered);
+    setPage(1); // Reset to page 1 when filters change
   }, [filters, pbnSites]);
 
   const handleOrderClick = (site) => {
