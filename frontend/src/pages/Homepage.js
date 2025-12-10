@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Shield, Zap, TrendingUp, CheckCircle } from 'lucide-react';
-import { packagesAPI, pbnAPI, blogAPI, settingsAPI } from '../api/client';
+import { packagesAPI, pbnAPI, blogAPI, settingsAPI, domainsAPI } from '../api/client';
 import { generateWhatsAppMessage, getWhatsAppURL } from '../utils/whatsapp';
 import { formatIDR, formatNumber } from '../utils/format';
 import SEOHead from '../components/SEOHead';
@@ -9,6 +9,7 @@ import SEOHead from '../components/SEOHead';
 const Homepage = () => {
   const [packages, setPackages] = useState([]);
   const [pbnSites, setPbnSites] = useState([]);
+  const [agedDomains, setAgedDomains] = useState([]);
   const [blogPosts, setBlogPosts] = useState([]);
   const [settings, setSettings] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -16,14 +17,16 @@ const Homepage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [pkgRes, pbnRes, blogRes, settingsRes] = await Promise.all([
+        const [pkgRes, pbnRes, domainsRes, blogRes, settingsRes] = await Promise.all([
           packagesAPI.getPublic(),
-          pbnAPI.getPublic({ sort_by: 'dr' }),
+          pbnAPI.getPublic({ sort_by: 'dr', limit: 6 }),
+          domainsAPI.getPublic({ sort_by: 'dr', limit: 6 }),
           blogAPI.getList({ limit: 3 }),
           settingsAPI.get(),
         ]);
         setPackages(pkgRes.data.slice(0, 3));
-        setPbnSites(pbnRes.data.slice(0, 6));
+        setPbnSites(pbnRes.data);
+        setAgedDomains(domainsRes.data);
         setBlogPosts(blogRes.data);
         setSettings(settingsRes.data);
       } catch (error) {
