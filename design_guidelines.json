@@ -1,0 +1,169 @@
+{
+  "identity": {
+    "persona": "E1: The Anti-AI Designer",
+    "tone": "Premium, Professional, Trustworthy, yet Friendly/Affordable",
+    "mission": "Create a high-end 'Control Room' aesthetic for the admin panel and a 'Fintech/High-Tech' feel for the public site. Avoid generic SaaS templates."
+  },
+  "typography": {
+    "font_family": {
+      "headings": "Poppins, sans-serif",
+      "body": "Inter, sans-serif",
+      "mono": "JetBrains Mono, monospace"
+    },
+    "weights": {
+      "headings": "600 (SemiBold) or 300 (Light) for large display",
+      "body": "400 (Regular)",
+      "bold": "700 (Bold)"
+    },
+    "tracking": {
+      "headings": "tracking-tight (-0.02em)",
+      "overline": "tracking-widest (0.2em)"
+    },
+    "scale": {
+      "h1": "text-5xl md:text-7xl font-semibold tracking-tighter",
+      "h2": "text-3xl md:text-5xl font-medium tracking-tight",
+      "h3": "text-2xl md:text-3xl font-medium",
+      "body": "text-base md:text-lg leading-relaxed text-slate-300"
+    }
+  },
+  "colors": {
+    "theme": "dark",
+    "palette": {
+      "background": {
+        "default": "#020617",
+        "paper": "#0f172a",
+        "subtle": "#1e293b"
+      },
+      "primary": {
+        "main": "#2563eb",
+        "light": "#60a5fa",
+        "dark": "#1e40af",
+        "contrast": "#ffffff"
+      },
+      "secondary": {
+        "main": "#64748b",
+        "light": "#94a3b8",
+        "dark": "#334155"
+      },
+      "accent": {
+        "cyan": "#06b6d4",
+        "gold": "#fbbf24"
+      },
+      "text": {
+        "primary": "#f8fafc",
+        "secondary": "#cbd5e1",
+        "muted": "#64748b"
+      },
+      "border": {
+        "default": "rgba(255, 255, 255, 0.1)",
+        "active": "rgba(37, 99, 235, 0.5)"
+      }
+    },
+    "gradients": {
+      "hero": "linear-gradient(to bottom right, #020617, #1e3a8a)",
+      "card_hover": "linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%)",
+      "glow": "radial-gradient(circle at center, rgba(37, 99, 235, 0.15) 0%, transparent 70%)"
+    }
+  },
+  "layout": {
+    "grid_system": {
+      "public": "Tetris Grid (Grid Cols 12 with asymmetric spans)",
+      "admin": "Control Room Grid (Dense, Dashboard style)"
+    },
+    "spacing": {
+      "container_padding": "px-6 md:px-12 lg:px-24",
+      "section_gap": "py-24 md:py-32",
+      "element_gap": "gap-6 md:gap-8"
+    },
+    "containers": {
+      "max_width": "max-w-7xl mx-auto",
+      "glass_panel": "bg-slate-950/50 backdrop-blur-xl border border-white/10 rounded-2xl"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-blue-600 hover:bg-blue-500 text-white rounded-full px-8 py-3 font-medium transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)]",
+      "secondary": "bg-transparent border border-white/20 text-white hover:bg-white/5 rounded-full px-8 py-3 transition-all",
+      "ghost": "text-slate-300 hover:text-white hover:bg-white/5 rounded-lg px-4 py-2"
+    },
+    "cards": {
+      "pricing": "relative overflow-hidden bg-slate-900/50 border border-white/10 rounded-3xl p-8 hover:border-blue-500/50 transition-colors group",
+      "feature": "bg-slate-900/30 border border-white/5 rounded-2xl p-6 hover:bg-slate-900/50 transition-all",
+      "pbn_item": "flex flex-col bg-slate-950 border border-white/10 rounded-xl overflow-hidden hover:shadow-xl transition-shadow"
+    },
+    "inputs": {
+      "default": "bg-slate-950/50 border-white/10 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-lg h-12 px-4 text-white placeholder:text-slate-500"
+    },
+    "navigation": {
+      "header": "fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-white/5",
+      "footer": "bg-slate-950 border-t border-white/10 py-20"
+    }
+  },
+  "visual_enhancers": {
+    "glassmorphism": "backdrop-blur-xl bg-white/5 border border-white/10",
+    "noise_texture": "url('/noise.png') opacity-5 mix-blend-overlay",
+    "glow_effects": "Use colored shadows (shadow-blue-500/20) instead of black shadows for depth in dark mode.",
+    "borders": "1px solid rgba(255,255,255,0.08) - crisp, subtle edges."
+  },
+  "motion": {
+    "library": "framer-motion",
+    "transitions": {
+      "default": "transition-all duration-300 ease-out",
+      "hover": "transform hover:-translate-y-1 hover:shadow-lg"
+    },
+    "animations": {
+      "fade_in_up": {
+        "initial": { "opacity": 0, "y": 20 },
+        "animate": { "opacity": 1, "y": 0 },
+        "transition": { "duration": 0.5 }
+      },
+      "stagger_children": {
+        "animate": { "transition": { "staggerChildren": 0.1 } }
+      }
+    }
+  },
+  "images": {
+    "hero_bg": {
+      "url": "https://images.unsplash.com/photo-1489436969537-cf0c1dc69cba?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzV8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwbmV0d29yayUyMGNvbm5lY3Rpb25zJTIwYmx1ZSUyMGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc2NTM0OTM3OXww&ixlib=rb-4.1.0&q=85",
+      "alt": "Digital Network Background",
+      "usage": "Hero section background with heavy overlay (bg-slate-950/90)"
+    },
+    "infrastructure": {
+      "url": "https://images.unsplash.com/photo-1645477704075-cb3d14b349ee?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBzZXJ2ZXIlMjByb29tJTIwZGF0YSUyMGNlbnRlciUyMGJsdWUlMjBsaWdodGluZ3xlbnwwfHx8fDE3NjUzNDkzODF8MA&ixlib=rb-4.1.0&q=85",
+      "alt": "Server Room Infrastructure",
+      "usage": "PBN Network section or 'Why Choose Us' background"
+    },
+    "team": {
+      "url": "https://images.unsplash.com/photo-1758518729685-f88df7890776?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3MjQyMTd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHRlYW0lMjBtZWV0aW5nJTIwbW9kZXJuJTIwb2ZmaWNlJTIwcHJvZmVzc2lvbmFsfGVufDB8fHx8MTc2NTM0OTM4NHww&ixlib=rb-4.1.0&q=85",
+      "alt": "Professional Team",
+      "usage": "About Us page or Trust section"
+    }
+  },
+  "instructions_to_main_agent": {
+    "general": [
+      "Implement Dark Mode ONLY. Do not build a light mode toggle unless explicitly asked later.",
+      "Use 'Poppins' for all Headings and 'Inter' for body text.",
+      "Ensure all text has sufficient contrast against the dark background (min 4.5:1).",
+      "Use the 'Royal Blue' (#2563eb) sparingly for high-impact CTAs and active states.",
+      "For the Admin Panel, prioritize density and data visibility ('Control Room' aesthetic)."
+    ],
+    "specific_pages": {
+      "home": "Hero section must be immersive. Use the 'Digital Network' image with a gradient overlay. Feature the 'Packages' prominently using the 'Tracing Beam' card style.",
+      "pbn_list": "Use a dense table or grid layout. Hide actual domains (e.g., 'Domain #123'). Use badges for metrics (DA, PA, TF).",
+      "blog": "Clean, readable typography. Max-width 65ch for article content.",
+      "admin": "Sidebar navigation. Dashboard with summary cards (Total Sites, Active Orders). Use Shadcn Table for data management."
+    },
+    "components": [
+      "Customize Shadcn components to match the dark/royal blue theme.",
+      "Use 'sonner' for all toast notifications.",
+      "Ensure the 'Order via WhatsApp' button is floating and visible on mobile."
+    ]
+  },
+  "universal_guidelines": [
+    "Do not use generic centered layouts. Use asymmetry where possible.",
+    "Add micro-interactions to every button and card (hover lift, glow, border color change).",
+    "Use 'data-testid' on all interactive elements.",
+    "Never use pure black (#000000) for backgrounds; use tinted blacks (#020617).",
+    "Images must be lazy-loaded and optimized."
+  ]
+}
