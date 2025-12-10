@@ -188,8 +188,8 @@ const PBNPage = () => {
         </div>
 
         {/* PBN Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {filteredSites.map((site, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          {filteredSites.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE).map((site, index) => (
             <div
               key={site.id}
               data-testid={`pbn-item-${index}`}
@@ -260,6 +260,33 @@ const PBNPage = () => {
             </div>
           ))}
         </div>
+
+        {/* Pagination */}
+        {filteredSites.length > ITEMS_PER_PAGE && (
+          <div className="mb-12 flex justify-center items-center gap-4">
+            {page > 1 && (
+              <button
+                onClick={() => setPage(page - 1)}
+                data-testid="prev-page-btn"
+                className="bg-slate-900 hover:bg-slate-800 text-white rounded-lg px-6 py-2 font-medium transition-all"
+              >
+                Previous
+              </button>
+            )}
+            <div className="text-slate-400 px-4">
+              Halaman <span className="text-white font-semibold">{page}</span> dari <span className="text-white font-semibold">{Math.ceil(filteredSites.length / ITEMS_PER_PAGE)}</span>
+            </div>
+            {page < Math.ceil(filteredSites.length / ITEMS_PER_PAGE) && (
+              <button
+                onClick={() => setPage(page + 1)}
+                data-testid="next-page-btn"
+                className="bg-blue-600 hover:bg-blue-500 text-white rounded-lg px-6 py-2 font-medium transition-all"
+              >
+                Next
+              </button>
+            )}
+          </div>
+        )}
 
         {/* CTA Section */}
         <div className="glass-panel p-8 md:p-12 text-center">
