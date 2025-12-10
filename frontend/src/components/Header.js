@@ -19,6 +19,7 @@ const Header = () => {
     { name: 'Beranda', path: '/' },
     { name: 'Paket', path: '/paket' },
     { name: 'PBN Network', path: '/pbn' },
+    { name: 'Aged Domain', path: '/domains' },
     { name: 'Blog', path: '/blog' },
     { name: 'FAQ', path: '/faq' },
   ];
