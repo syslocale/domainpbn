@@ -28,6 +28,7 @@ import BlogManagement from './pages/admin/BlogManagement';
 import FAQManagement from './pages/admin/FAQManagement';
 import PagesManagement from './pages/admin/PagesManagement';
 import SettingsManagement from './pages/admin/SettingsManagement';
+import PageContentManagement from './pages/admin/PageContentManagement';
 
 // Public Layout Wrapper
 const PublicLayout = ({ children }) => (
