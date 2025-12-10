@@ -61,6 +61,7 @@ function App() {
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="pbn" element={<PBNManagement />} />
+            <Route path="domains" element={<DomainsManagement />} />
             <Route path="packages" element={<PackagesManagement />} />
             <Route path="blog" element={<BlogManagement />} />
             <Route path="faq" element={<FAQManagement />} />
