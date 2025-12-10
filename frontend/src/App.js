@@ -49,6 +49,7 @@ function App() {
           <Route path="/" element={<PublicLayout><Homepage /></PublicLayout>} />
           <Route path="/paket" element={<PublicLayout><PackagesPage /></PublicLayout>} />
           <Route path="/pbn" element={<PublicLayout><PBNPage /></PublicLayout>} />
+          <Route path="/domains" element={<PublicLayout><DomainsPage /></PublicLayout>} />
           <Route path="/blog" element={<PublicLayout><BlogListPage /></PublicLayout>} />
           <Route path="/blog/:slug" element={<PublicLayout><BlogDetailPage /></PublicLayout>} />
           <Route path="/faq" element={<PublicLayout><FAQPage /></PublicLayout>} />
