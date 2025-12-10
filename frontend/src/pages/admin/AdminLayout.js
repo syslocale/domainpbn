@@ -10,6 +10,7 @@ import {
   Settings,
   Menu,
   X,
+  Edit3,
 } from 'lucide-react';
 
 const AdminLayout = () => {
@@ -24,6 +25,7 @@ const AdminLayout = () => {
     { name: 'Blog', path: '/admin/blog', icon: <FileText size={20} /> },
     { name: 'FAQ', path: '/admin/faq', icon: <HelpCircle size={20} /> },
     { name: 'Pages', path: '/admin/pages', icon: <File size={20} /> },
+    { name: 'Page Content', path: '/admin/page-content', icon: <Edit3 size={20} /> },
     { name: 'Settings', path: '/admin/settings', icon: <Settings size={20} /> },
   ];
 
