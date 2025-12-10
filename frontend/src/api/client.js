@@ -62,4 +62,14 @@ export const settingsAPI = {
   update: (data) => apiClient.put('/admin/settings', data),
 };
 
+// Domain Listing API
+export const domainsAPI = {
+  getPublic: (params) => apiClient.get('/domains', { params }),
+  getAll: () => apiClient.get('/admin/domains'),
+  create: (data) => apiClient.post('/admin/domains', data),
+  importBulk: (data) => apiClient.post('/admin/domains/import', data),
+  update: (id, data) => apiClient.put(`/admin/domains/${id}`, data),
+  delete: (id) => apiClient.delete(`/admin/domains/${id}`),
+};
+
 export default apiClient;
