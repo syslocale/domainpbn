@@ -27,7 +27,7 @@ const BlogListPage = () => {
   }, [searchQuery, page]);
 
   const handleSearch = (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     setPage(1);
   };
 
