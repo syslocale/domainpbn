@@ -40,6 +40,7 @@ const PublicLayout = ({ children }) => (
 function App() {
   return (
     <div className="App">
+      <Toaster position="top-right" richColors />
       <BrowserRouter>
         <Routes>
           {/* Public Routes */}
