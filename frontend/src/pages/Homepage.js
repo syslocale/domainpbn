@@ -287,8 +287,68 @@ const Homepage = () => {
         </div>
       </section>
 
-      {/* Blog Section */}
+      {/* Aged Domains Section */}
       <section className="py-24 md:py-32">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-medium tracking-tight mb-4 text-white">
+              Domain <span className="text-blue-400">Aged & Expired</span>
+            </h2>
+            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+              Domain berkualitas dengan authority tinggi siap untuk digunakan
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {agedDomains.map((domain, index) => (
+              <div key={domain.id} data-testid={`domain-preview-${index}`} className="glass-panel p-6 hover:bg-slate-900/50 transition-all">
+                <div className="mb-4">
+                  <div className="text-blue-400 font-semibold text-lg mb-2 break-all">{domain.domain_name}</div>
+                  <div className="flex items-center gap-2 text-slate-400 text-sm">
+                    <span className="bg-green-500/10 text-green-400 px-2 py-1 rounded text-xs font-medium">
+                      {domain.status.toUpperCase()}
+                    </span>
+                    <span>• {domain.age} tahun</span>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-3 gap-3 mb-4">
+                  <div>
+                    <div className="text-sm font-semibold text-white">{domain.dr}</div>
+                    <div className="text-xs text-slate-500">DR</div>
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-white">{domain.da}</div>
+                    <div className="text-xs text-slate-500">DA</div>
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-white">{domain.pa}</div>
+                    <div className="text-xs text-slate-500">PA</div>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between pt-4 border-t border-white/10">
+                  <span className="text-xs text-slate-500">{domain.registrar}</span>
+                  <span className="text-blue-400 font-bold">{formatIDR(domain.price)}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              to="/domains"
+              className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-medium transition-colors"
+            >
+              Lihat Semua Domain
+              <ArrowRight size={18} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Section */}
+      <section className="py-24 md:py-32 bg-slate-950">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-medium tracking-tight mb-4 text-white">
