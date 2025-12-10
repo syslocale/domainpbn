@@ -530,6 +530,54 @@ async def update_settings(settings: SettingsUpdate):
     )
     return settings_obj
 
+# Page Content Routes
+@api_router.get("/page-content", response_model=List[PageContent])
+async def get_all_page_contents():
+    """Get all page content templates"""
+    contents = await db.page_contents.find({}, {"_id": 0}).to_list(1000)
+    return [deserialize_datetime(content) for content in contents]
+
+@api_router.get("/page-content/{page_key}", response_model=PageContent)
+async def get_page_content(page_key: str):
+    """Get specific page content by key"""
+    content = await db.page_contents.find_one({"page_key": page_key}, {"_id": 0})
+    if not content:
+        raise HTTPException(status_code=404, detail="Page content not found")
+    return deserialize_datetime(content)
+
+@api_router.get("/admin/page-content", response_model=List[PageContent])
+async def get_admin_page_contents():
+    """Get all page contents for admin"""
+    contents = await db.page_contents.find({}, {"_id": 0}).to_list(1000)
+    return [deserialize_datetime(content) for content in contents]
+
+@api_router.post("/admin/page-content", response_model=PageContent)
+async def create_page_content(content: PageContentCreate):
+    """Create new page content"""
+    content_obj = PageContent(**content.model_dump())
+    doc = serialize_datetime(content_obj.model_dump())
+    await db.page_contents.insert_one(doc)
+    return content_obj
+
+@api_router.put("/admin/page-content/{content_id}", response_model=PageContent)
+async def update_page_content(content_id: str, content: PageContentUpdate):
+    """Update page content"""
+    doc = serialize_datetime(content.model_dump())
+    doc['updated_at'] = datetime.now(timezone.utc).isoformat()
+    result = await db.page_contents.update_one({"id": content_id}, {"$set": doc})
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Page content not found")
+    updated_content = await db.page_contents.find_one({"id": content_id}, {"_id": 0})
+    return deserialize_datetime(updated_content)
+
+@api_router.delete("/admin/page-content/{content_id}")
+async def delete_page_content(content_id: str):
+    """Delete page content"""
+    result = await db.page_contents.delete_one({"id": content_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Page content not found")
+    return {"message": "Page content deleted"}
+
 # SEO Routes
 @api_router.get("/sitemap")
 async def get_sitemap():
