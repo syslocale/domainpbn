@@ -400,7 +400,7 @@ const Homepage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 md:py-32 bg-slate-950">
+      <section className="py-24 md:py-32">
         <div className="max-w-4xl mx-auto px-6 md:px-12 text-center">
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight mb-6 text-white">
             Siap Tingkatkan <span className="text-blue-400">Ranking</span> Website Anda?
