@@ -172,6 +172,23 @@ class Settings(SettingsBase):
     id: str = "global_settings"
     updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
+# Page Content Models
+class PageContentBase(BaseModel):
+    page_key: str
+    section: str
+    content: Dict[str, Any]
+
+class PageContentCreate(PageContentBase):
+    pass
+
+class PageContentUpdate(BaseModel):
+    content: Dict[str, Any]
+
+class PageContent(PageContentBase):
+    model_config = ConfigDict(extra="ignore")
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
 # ==================== HELPER FUNCTIONS ====================
 
 def serialize_datetime(obj: Any) -> Any:
