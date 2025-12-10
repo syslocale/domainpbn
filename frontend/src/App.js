@@ -1,49 +1,66 @@
-import { useEffect } from "react";
-import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import '@/App.css';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+// Layout Components
+import Header from './components/Header';
+import Footer from './components/Footer';
+import FloatingWhatsApp from './components/FloatingWhatsApp';
 
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
+// Public Pages
+import Homepage from './pages/Homepage';
+import PackagesPage from './pages/PackagesPage';
+import PBNPage from './pages/PBNPage';
+import BlogListPage from './pages/BlogListPage';
+import BlogDetailPage from './pages/BlogDetailPage';
+import FAQPage from './pages/FAQPage';
+import StaticPage from './pages/StaticPage';
 
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
+// Admin Pages
+import AdminLayout from './pages/admin/AdminLayout';
+import Dashboard from './pages/admin/Dashboard';
+import PBNManagement from './pages/admin/PBNManagement';
+import PackagesManagement from './pages/admin/PackagesManagement';
+import BlogManagement from './pages/admin/BlogManagement';
+import FAQManagement from './pages/admin/FAQManagement';
+import PagesManagement from './pages/admin/PagesManagement';
+import SettingsManagement from './pages/admin/SettingsManagement';
 
-  return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
+// Public Layout Wrapper
+const PublicLayout = ({ children }) => (
+  <>
+    <Header />
+    <main>{children}</main>
+    <Footer />
+    <FloatingWhatsApp />
+  </>
+);
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
+          {/* Public Routes */}
+          <Route path="/" element={<PublicLayout><Homepage /></PublicLayout>} />
+          <Route path="/paket" element={<PublicLayout><PackagesPage /></PublicLayout>} />
+          <Route path="/pbn" element={<PublicLayout><PBNPage /></PublicLayout>} />
+          <Route path="/blog" element={<PublicLayout><BlogListPage /></PublicLayout>} />
+          <Route path="/blog/:slug" element={<PublicLayout><BlogDetailPage /></PublicLayout>} />
+          <Route path="/faq" element={<PublicLayout><FAQPage /></PublicLayout>} />
+          <Route path="/about" element={<PublicLayout><StaticPage /></PublicLayout>} />
+          <Route path="/tos" element={<PublicLayout><StaticPage /></PublicLayout>} />
+          <Route path="/privacy" element={<PublicLayout><StaticPage /></PublicLayout>} />
+
+          {/* Admin Routes */}
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="pbn" element={<PBNManagement />} />
+            <Route path="packages" element={<PackagesManagement />} />
+            <Route path="blog" element={<BlogManagement />} />
+            <Route path="faq" element={<FAQManagement />} />
+            <Route path="pages" element={<PagesManagement />} />
+            <Route path="settings" element={<SettingsManagement />} />
           </Route>
         </Routes>
       </BrowserRouter>
