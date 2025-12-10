@@ -220,7 +220,9 @@ async def get_pbn_sites(
     niche: Optional[str] = None,
     min_dr: Optional[int] = None,
     max_price: Optional[int] = None,
-    sort_by: str = "dr"
+    sort_by: str = "dr",
+    page: int = Query(1, ge=1),
+    limit: int = Query(10, ge=1, le=100)
 ):
     """Get public PBN listing (domain hidden)"""
     query = {"status": "active"}
@@ -232,7 +234,8 @@ async def get_pbn_sites(
         query["price_per_post"] = {"$lte": max_price}
     
     sort_field = sort_by if sort_by in ["dr", "da", "traffic", "price_per_post"] else "dr"
-    sites = await db.pbn_sites.find(query, {"_id": 0, "domain_real": 0, "notes": 0}).sort(sort_field, -1).to_list(1000)
+    skip = (page - 1) * limit
+    sites = await db.pbn_sites.find(query, {"_id": 0, "domain_real": 0, "notes": 0}).sort(sort_field, -1).skip(skip).limit(limit).to_list(limit)
     return [deserialize_datetime(site) for site in sites]
 
 @api_router.get("/admin/pbn", response_model=List[PBNSite])
@@ -427,7 +430,9 @@ async def get_domains(
     status: Optional[str] = None,
     min_dr: Optional[int] = None,
     max_price: Optional[int] = None,
-    sort_by: str = "dr"
+    sort_by: str = "dr",
+    page: int = Query(1, ge=1),
+    limit: int = Query(10, ge=1, le=100)
 ):
     """Get public domain listings"""
     query = {}
@@ -442,7 +447,8 @@ async def get_domains(
         query["price"] = {"$lte": max_price}
     
     sort_field = sort_by if sort_by in ["dr", "da", "price", "age"] else "dr"
-    domains = await db.domain_listings.find(query, {"_id": 0}).sort(sort_field, -1).to_list(1000)
+    skip = (page - 1) * limit
+    domains = await db.domain_listings.find(query, {"_id": 0}).sort(sort_field, -1).skip(skip).limit(limit).to_list(limit)
     return [deserialize_datetime(domain) for domain in domains]
 
 @api_router.get("/admin/domains", response_model=List[DomainListing])
