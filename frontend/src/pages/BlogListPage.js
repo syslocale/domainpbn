@@ -131,23 +131,30 @@ const BlogListPage = () => {
           </div>
         )}
 
-        {/* Pagination (Simple) */}
-        {posts.length === 9 && (
-          <div className="mt-12 flex justify-center gap-4">
+        {/* Pagination */}
+        {(page > 1 || posts.length === 9) && (
+          <div className="mt-12 flex justify-center items-center gap-4">
             {page > 1 && (
               <button
                 onClick={() => setPage(page - 1)}
+                data-testid="prev-page-btn"
                 className="bg-slate-900 hover:bg-slate-800 text-white rounded-lg px-6 py-2 font-medium transition-all"
               >
                 Previous
               </button>
             )}
-            <button
-              onClick={() => setPage(page + 1)}
-              className="bg-blue-600 hover:bg-blue-500 text-white rounded-lg px-6 py-2 font-medium transition-all"
-            >
-              Next Page
-            </button>
+            <div className="text-slate-400 px-4">
+              Halaman <span className="text-white font-semibold">{page}</span>
+            </div>
+            {posts.length === 9 && (
+              <button
+                onClick={() => setPage(page + 1)}
+                data-testid="next-page-btn"
+                className="bg-blue-600 hover:bg-blue-500 text-white rounded-lg px-6 py-2 font-medium transition-all"
+              >
+                Next
+              </button>
+            )}
           </div>
         )}
       </div>
