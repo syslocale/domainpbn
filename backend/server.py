@@ -421,6 +421,67 @@ async def delete_page(page_id: str):
         raise HTTPException(status_code=404, detail="Page not found")
     return {"message": "Page deleted"}
 
+# Domain Listing Routes
+@api_router.get("/domains", response_model=List[DomainListing])
+async def get_domains(
+    status: Optional[str] = None,
+    min_dr: Optional[int] = None,
+    max_price: Optional[int] = None,
+    sort_by: str = "dr"
+):
+    """Get public domain listings"""
+    query = {}
+    if status:
+        query["status"] = status
+    else:
+        query["status"] = "available"  # Default to available only
+        
+    if min_dr:
+        query["dr"] = {"$gte": min_dr}
+    if max_price:
+        query["price"] = {"$lte": max_price}
+    
+    sort_field = sort_by if sort_by in ["dr", "da", "price", "age"] else "dr"
+    domains = await db.domain_listings.find(query, {"_id": 0}).sort(sort_field, -1).to_list(1000)
+    return [deserialize_datetime(domain) for domain in domains]
+
+@api_router.get("/admin/domains", response_model=List[DomainListing])
+async def get_admin_domains():
+    """Get all domains for admin"""
+    domains = await db.domain_listings.find({}, {"_id": 0}).to_list(1000)
+    return [deserialize_datetime(domain) for domain in domains]
+
+@api_router.post("/admin/domains", response_model=DomainListing)
+async def create_domain(domain: DomainListingCreate):
+    domain_obj = DomainListing(**domain.model_dump())
+    doc = serialize_datetime(domain_obj.model_dump())
+    await db.domain_listings.insert_one(doc)
+    return domain_obj
+
+@api_router.post("/admin/domains/import")
+async def import_domains(domains: List[DomainListingCreate]):
+    """Bulk import domains from CSV/Excel"""
+    domain_objs = [DomainListing(**domain.model_dump()) for domain in domains]
+    docs = [serialize_datetime(obj.model_dump()) for obj in domain_objs]
+    result = await db.domain_listings.insert_many(docs)
+    return {"imported": len(result.inserted_ids), "message": f"{len(result.inserted_ids)} domains imported successfully"}
+
+@api_router.put("/admin/domains/{domain_id}", response_model=DomainListing)
+async def update_domain(domain_id: str, domain: DomainListingCreate):
+    doc = serialize_datetime(domain.model_dump())
+    result = await db.domain_listings.update_one({"id": domain_id}, {"$set": doc})
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Domain not found")
+    updated_domain = await db.domain_listings.find_one({"id": domain_id}, {"_id": 0})
+    return deserialize_datetime(updated_domain)
+
+@api_router.delete("/admin/domains/{domain_id}")
+async def delete_domain(domain_id: str):
+    result = await db.domain_listings.delete_one({"id": domain_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Domain not found")
+    return {"message": "Domain deleted"}
+
 # Settings Routes
 @api_router.get("/settings", response_model=Settings)
 async def get_settings():
