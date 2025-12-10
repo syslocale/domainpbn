@@ -186,14 +186,21 @@ const BlogForm = ({ post, onSuccess, onCancel }) => {
               Content <span className="text-red-400">*</span>
             </label>
             <div className="bg-white rounded-lg" data-testid="blog-content-editor">
-              <ReactQuill
-                theme="snow"
-                value={formData.content}
-                onChange={(value) => setFormData({ ...formData, content: value })}
-                modules={modules}
-                formats={formats}
-                style={{ height: '400px', marginBottom: '50px' }}
-              />
+              {ReactQuill ? (
+                <ReactQuill
+                  ref={quillRef}
+                  theme="snow"
+                  value={formData.content}
+                  onChange={(value) => setFormData({ ...formData, content: value })}
+                  modules={modules}
+                  formats={formats}
+                  style={{ height: '400px', marginBottom: '50px' }}
+                />
+              ) : (
+                <div className="flex items-center justify-center h-96">
+                  <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+                </div>
+              )}
             </div>
           </div>
 
