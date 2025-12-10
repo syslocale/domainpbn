@@ -161,7 +161,7 @@ const PageForm = ({ page, onSuccess, onCancel }) => {
             <label className="block text-sm font-medium text-slate-300 mb-2">
               Content <span className="text-red-400">*</span>
             </label>
-            <div className="bg-white rounded-lg" data-testid="page-content-editor">
+            <div className="quill-dark-wrapper rounded-lg" data-testid="page-content-editor">
               {ReactQuill ? (
                 <ReactQuill
                   ref={quillRef}
